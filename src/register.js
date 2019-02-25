@@ -20,16 +20,16 @@ class Register extends React.Component{
     onChangeHandler = (key, value) => {
         const {field} = this.state;
         field[key]= value;
-        this.setState({field});
+        this.setState({field: field});
     }
 
 
     handleValidation(){
-        let field = this.state.field;
+        let {field} = this.state;
         let errors = {};
         let formIsValid = true;
 
-        //validation for name
+   
         if(!field["name"] || !field["name"].match(/^[a-zA-Z]+$/)){
             formIsValid = false;
             errors["name"]= "Please enter valid name";
@@ -37,9 +37,17 @@ class Register extends React.Component{
 
         if(!field["email"]){
             formIsValid = false;
-            errors["email"] = "Cannot be empty"
+            errors["email"] = "email cannot be empty"
         }
-        this.setState({ errors });
+        if(!field["password"]){
+            formIsValid = false;
+            errors["password"] = "Password cannot be empty"
+        }
+        if(field["password"].length > 0 && field["password"].length < 8){
+            formIsValid = false;
+            errors["password"] = "Password should be of minimum 8 digits"
+        }
+        this.setState({ errors : errors });
         return formIsValid;
 
         

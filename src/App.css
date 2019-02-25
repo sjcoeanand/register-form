@@ -6,6 +6,16 @@
   padding: 2px;
   background-color: aqua;
 } */
+form input[type="*"]{
+  background-color: #aef;
+  margin-bottom: 20px;
+}
+.login-form{
+  /* display: none; */
+}
+.register-form{
+  display: none;
+}
 .register-form span{
   color: red;
   font-size: 12px;
